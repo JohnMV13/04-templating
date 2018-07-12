@@ -5,9 +5,9 @@ let articleView = {};
 // TODO: Where possible, refactor methods into arrow functions, including the document.ready() method at the bottom.
 
 // COMMENT: How do arrow functions affect the context of "this"? How did you determine if a function could be refactored?
-// PUT YOUR RESPONSE HERE
+// We just looked for all the functions that didn't have (this) and changed them to the arrow functions
 
-articleView.populateFilters = () => {
+articleView.populateFilters = () =>{
   $('article').each(function() {
     if (!$(this).hasClass('template')) {
       let val = $(this).find('address a').text();
@@ -26,7 +26,7 @@ articleView.populateFilters = () => {
   });
 };
 
-articleView.handleAuthorFilter = () => {
+articleView.handleAuthorFilter = () =>{
   $('#author-filter').on('change', function() {
     if ($(this).val()) {
       $('article').hide();
@@ -39,7 +39,7 @@ articleView.handleAuthorFilter = () => {
   });
 };
 
-articleView.handleCategoryFilter = () => {
+articleView.handleCategoryFilter = ()=>{
   $('#category-filter').on('change', function() {
     if ($(this).val()) {
       $('article').hide();
@@ -52,7 +52,7 @@ articleView.handleCategoryFilter = () => {
   });
 };
 
-articleView.handleMainNav = () => {
+articleView.handleMainNav = ()=>{
   $('nav').on('click', '.tab', function(e) {
     e.preventDefault();
     $('.tab-content').hide();
@@ -62,7 +62,7 @@ articleView.handleMainNav = () => {
   $('nav .tab:first').click();
 };
 
-articleView.setTeasers = () => {
+articleView.setTeasers = ()=>{
   $('.article-body *:nth-of-type(n+2)').hide();
   $('article').on('click', 'a.read-on', function(e) {
     e.preventDefault();
@@ -79,7 +79,7 @@ articleView.setTeasers = () => {
   });
 };
 
-$(document).ready(() => {
+$(document).ready(()=>{
   articleView.populateFilters();
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
